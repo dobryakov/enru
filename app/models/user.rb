@@ -11,20 +11,33 @@ class User < ActiveRecord::Base
     next_attempt = nil
     last_attempt = self.attempts.last
 
-    if last_attempt.nil?
-      # create first attempt
-      last_attempt_id = 0
+    # если попытка уже была, но не завершена
+    if !last_attempt.nil? && last_attempt.translated.to_s == ''
+
+      # отдаём эту же попытку снова
+      next_attempt = last_attempt
+
     else
-      last_attempt_id = last_attempt.id
-    end
 
-    phrase = Phrase.where('id > ?', last_attempt_id).first
+      if last_attempt.nil?
+        # create first attempt
+        last_phrase_id = 0
+      else
+        # фраза последней попытки
+        last_phrase_id = last_attempt.phrase.id
+      end
 
-    unless phrase.nil?
-      next_attempt = Attempt.create(
-        :user   => self,
-        :phrase => phrase
-      )
+      # получаем следующую по порядку фразу
+      phrase = Phrase.where('id > ?', last_phrase_id).first
+
+      # если фраза нашлась
+      unless phrase.nil?
+        next_attempt = Attempt.create(
+          :user   => self,
+          :phrase => phrase
+        )
+      end
+
     end
 
     next_attempt
