@@ -75,3 +75,6 @@ gem 'differ'
 
 # https://github.com/aegorov/yandex-translator
 gem 'yandex-translator'
+
+# http://feedjira.com/
+gem 'feedjira'
