@@ -72,3 +72,6 @@ gem 'google-api-client'
 # https://github.com/pvande/differ
 # http://makandracards.com/makandra/1411-diff-two-strings-in-ruby
 gem 'differ'
+
+# https://github.com/aegorov/yandex-translator
+gem 'yandex-translator'
