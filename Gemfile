@@ -68,3 +68,7 @@ gem "omniauth-google-oauth2"
 # http://landonmarder.com/posts/2014/06/04/google-cal-rails/
 # https://developers.google.com/google-apps/calendar/quickstart/ruby
 gem 'google-api-client'
+
+# https://github.com/pvande/differ
+# http://makandracards.com/makandra/1411-diff-two-strings-in-ruby
+gem 'differ'

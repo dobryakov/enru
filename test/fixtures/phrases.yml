@@ -1,11 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  source: MyText
-  translated: MyText
-  feed_id: 
-
-two:
-  source: MyText
-  translated: MyText
-  feed_id: 
+  source: 'This is an english sample'
+  translated: 'Это английский образец'
