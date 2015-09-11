@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911140813) do
+ActiveRecord::Schema.define(version: 20150911141221) do
+
+  create_table "attempts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "phrase_id"
+    t.text     "translated"
+    t.float    "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "attempts", ["phrase_id"], name: "index_attempts_on_phrase_id"
+  add_index "attempts", ["user_id"], name: "index_attempts_on_user_id"
 
   create_table "feeds", force: :cascade do |t|
     t.text     "url"
