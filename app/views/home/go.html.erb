@@ -1,0 +1,40 @@
+<p>
+    <%=h @attempt.phrase.source %>
+</p>
+
+<p>
+  <textarea id="translated"></textarea>
+</p>
+
+<p>
+  <input type="button" class="btn btn-default" value=" Done! " id="done-button">
+</p>
+
+<p id="phrase_translated">
+
+</p>
+
+<script type="text/javascript">
+
+    $('#done-button').click(function () {
+
+        var translated = $('#translated').val();
+
+        var data = {
+            attempt: {
+                translated: translated
+            }
+        };
+
+        $.ajax({
+            url: '<%=h attempt_path(@attempt, :format => :json) %>',
+            type: 'PATCH',
+            data: data,
+            success: function (result) {
+                console.log(result);
+            }
+        });
+
+    });
+
+</script>
